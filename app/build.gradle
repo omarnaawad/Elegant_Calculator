@@ -1,5 +1,25 @@
 apply plugin: 'com.android.application'
 
+publishing{
+    publications {
+        mavenJava(MavenPublication) {
+            groupId 'androidx.first'
+            artifactId 'first'
+            version '1'
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            credentials {
+                username = "admin"
+                password = "password"
+            }
+            url = "http://10.16.33.232:8081/repository/myrepo/"
+            allowInsecureProtocol true
+        }
+    }
+}
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.0"
